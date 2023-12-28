@@ -1,5 +1,5 @@
 <h1>ISS.Tracker</h1>
-![grafik](https://github.com/j-schall/ISS-Tracker/assets/122560931/ea682fc8-d85f-4023-9615-39cba91337f7)
+<img width="458" alt="Screenshot 2023-12-28 141406" src="https://github.com/j-schall/ISS-Tracker/assets/122560931/e7be583d-8823-4cd9-b9be-fa4402ad765a">
 <p>This application receive real time data from the International Space Station to show the newest information about: </p>
 <ul>
   <li>Current Position (visualized with a world map)</li>
