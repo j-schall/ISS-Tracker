@@ -1,3 +1,12 @@
+/*
+██╗███████╗███████╗   ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗██████╗
+██║██╔════╝██╔════╝   ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+██║███████╗███████╗█████╗██║   ██████╔╝███████║██║     █████╔╝ █████╗  ██████╔╝
+██║╚════██║╚════██║╚════╝██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+██║███████║███████║      ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║
+╚═╝╚══════╝╚══════╝      ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+*/
+
 package org.jan.isstracker;
 
 import javafx.application.Application;
@@ -8,6 +17,7 @@ import org.jan.isstracker.UI.View;
 
 public class Main extends Application {
     public static Stage WINDOW;
+
     @Override
     public void start(Stage stage) throws Exception {
         WINDOW = stage;
@@ -18,6 +28,7 @@ public class Main extends Application {
         stage.setTitle("ISS-Tracker");
         stage.show();
     }
+
     public static void main(String[] args) {
         launch();
     }
