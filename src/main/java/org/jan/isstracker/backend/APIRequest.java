@@ -42,7 +42,7 @@ public class APIRequest {
 
     public String getCrew() {
         try {
-            URL url = new URL("http://api.open-notify.org/astros.json");
+            URL url = new URL("https://corquaid.github.io/international-space-station-APIs/JSON/people-in-space.json");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
 

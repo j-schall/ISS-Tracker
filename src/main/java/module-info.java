@@ -12,6 +12,8 @@ module org.jan.isstracker {
     exports org.jan.isstracker.backend;
 
     opens org.jan.isstracker.UI to javafx.fxml;
+    opens org.jan.isstracker.backend.Crew to com.google.gson;
+
     exports org.jan.isstracker.backend.Location;
     exports org.jan.isstracker.backend.Crew;
 }
