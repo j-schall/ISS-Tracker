@@ -152,15 +152,21 @@ public class View implements Initializable {
     }
 
     private void getPersonsInSpace(CrewInformation crewInfo) {
-        totalCrewNumber.setText(String.valueOf(crewInfo.number));
         ArrayList<Person> people = crewInfo.people;
 
-        // Map the persons' JSON-data to the tableview
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         craftColumn.setCellValueFactory(new PropertyValueFactory<>("spacecraft"));
 
+        // Map the persons' JSON-data to the tableview
+        int count = 1;
         ObservableList<Person> persons = FXCollections.observableArrayList();
-        persons.addAll(people);
+        for (Person p : people) {
+            if (p.iss) {
+                totalCrewNumber.setText(String.valueOf(count));
+                persons.add(p);
+                count++;
+            }
+        }
         memberTable.setItems(persons);
 
         // Ändere die Positionierung des PopOver-Handlers
