@@ -17,7 +17,6 @@ import org.jan.isstracker.UI.View;
 
 public class Main extends Application {
     public static Stage WINDOW;
-
     @Override
     public void start(Stage stage) throws Exception {
         WINDOW = stage;

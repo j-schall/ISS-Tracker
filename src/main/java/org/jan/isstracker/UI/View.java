@@ -15,8 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -28,7 +26,6 @@ import org.jan.isstracker.backend.Crew.CrewInformation;
 import org.jan.isstracker.backend.Crew.Person;
 import org.jan.isstracker.backend.Location.RootInformation;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
@@ -81,7 +78,6 @@ public class View implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         assert checkConnection();
-
         makeRequest();
         APIRequest request = new APIRequest();
         getPersonsInSpace(request.convertToClass(APIRequest.CREW));
@@ -149,9 +145,9 @@ public class View implements Initializable {
     }
 
     private void setMap(double latitude, double longitude) {
-        WorldMap mapView = new WorldMap();
+        WorldMap mapView = new WorldMap(WorldMap.ISS_POSITION);
         mapView.setPrefSize(332, 210);
-        WorldMapView.Location location = new WorldMapView.Location(latitude, longitude);
+        WorldMap.Location location = new WorldMap.Location(latitude, longitude);
         mapView.getLocations().add(location);
         mapPane.getChildren().add(mapView);
     }
