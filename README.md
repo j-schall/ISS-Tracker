@@ -11,8 +11,8 @@
 ### Resources
 [Open-Notify](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
 <br>
-[Corquaid's International Space Station API](https://corquaid.github.io/international-space-station-APIs/)
-[JavaFX](https://github.com/openjdk/jfx)
+[Corquaid's International Space Station API](https://corquaid.github.io/international-space-station-APIs/)<br>
+[JavaFX](https://github.com/openjdk/jfx)<br>
 [ControlsFX](https://github.com/controlsfx/controlsfx/)
 
 ### License
