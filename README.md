@@ -21,3 +21,4 @@ This project is licensed under the GNU General Public License v2.0. See the `LIC
 The following used libraries with their licenses:
 - [ControlsFX](https://github.com/controlsfx/controlsfx/) - Licensed under the BSD 3-Clause License.
 - [Corquaid's Space Station API](https://github.com/corquaid/international-space-station-APIs) - Licensed under the MIT License.
+- [JavaFX](https://github.com/openjdk/jfx) - Licensed under the GPL-v2.0 License
