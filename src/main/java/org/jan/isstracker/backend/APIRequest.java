@@ -13,6 +13,11 @@ import java.net.URL;
 public class APIRequest {
     public static final String CREW = "crew";
     public static final String LOCATION = "location";
+    private boolean connectionStatus = false;
+    private String latestCrewInfo;
+    private String latestIssInfo;
+    private String crewData;
+    private String issPosData;
 
     public String getLocation() {
         try {
@@ -29,15 +34,17 @@ public class APIRequest {
                     content.append(line);
                 }
                 reader.close();
-
-                // Convert JSON to Java Classes (ISSPosition and RootInformation)
-                return content.toString();
+                issPosData = content.toString();
+                connectionStatus = true;
+                return issPosData;
             }
             conn.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
+            connectionStatus = false;
         }
-        return null;
+        latestIssInfo = issPosData;
+        System.out.println("Returned backup iss data");
+        return latestIssInfo;
     }
 
     public String getCrew() {
@@ -55,13 +62,19 @@ public class APIRequest {
                     content.append(line);
                 }
                 reader.close();
-                return content.toString();
+                // If the program looses an Internet connection, it will show the latest data
+                // when an Internet connection was there
+                crewData = content.toString();
+                connectionStatus = true;
+                return crewData;
             }
             conn.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
+            connectionStatus = false;
         }
-        return null;
+        latestCrewInfo = crewData;
+        System.out.println("Returned backup Crew data");
+        return latestCrewInfo;
     }
 
     public <T> T convertToClass(String selection) {
@@ -80,5 +93,9 @@ public class APIRequest {
             }
             default -> throw new IllegalStateException("Unexpected value: " + selection);
         }
+    }
+
+    public boolean getConnectionStatus() {
+        return connectionStatus;
     }
 }

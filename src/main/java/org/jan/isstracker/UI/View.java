@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,11 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.controlsfx.control.WorldMapView;
 import org.jan.isstracker.Main;
 import org.jan.isstracker.backend.APIRequest;
 import org.jan.isstracker.backend.Crew.CrewInformation;
@@ -28,6 +24,7 @@ import org.jan.isstracker.backend.Location.RootInformation;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.*;
 
@@ -70,18 +67,16 @@ public class View implements Initializable {
 
     @FXML
     private Label endDateLabel;
-    private final String RECEIVE_DATA = "success";
     private RootInformation info;
     private CrewInformation crewInfo;
     private final ArrayList<Person> oldPersonData = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        assert checkConnection();
         makeRequest();
-        APIRequest request = new APIRequest();
-        getPersonsInSpace(request.convertToClass(APIRequest.CREW));
         try {
+            APIRequest request = new APIRequest();
+            getPersonsInSpace(request.convertToClass(APIRequest.CREW));
             getGeneralInformation(request.convertToClass(APIRequest.CREW));
         } catch (IOException ignored) {}
 
@@ -90,28 +85,21 @@ public class View implements Initializable {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if (checkConnection()) {
+                if (Main.netIsAvailable()) {
                     makeRequest();
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Disconnected from server. Please retry.");
-                    alert.setTitle("Internet Error");
-                    alert.initOwner(Main.WINDOW);
                 }
-
+                setConnStatus(false);
             }
         }, 2000, 2000);
     }
 
     private void makeRequest() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                // Make API request
-                APIRequest request = new APIRequest();
+        Platform.runLater(() -> {
+            // Make API request
+            APIRequest request = new APIRequest();
+            if (!request.getConnectionStatus()) {
                 info = request.convertToClass(APIRequest.LOCATION);
                 crewInfo = request.convertToClass(APIRequest.CREW);
-                checkConnection();
 
                 double longitude = Double.parseDouble(info.iss_position.longitude);
                 double latitude = Double.parseDouble(info.iss_position.latitude);
@@ -123,7 +111,12 @@ public class View implements Initializable {
                 // Display the data on the GUI
                 latitudeLabel.setText(String.valueOf(latitude));
                 longitudeLabel.setText(String.valueOf(longitude));
-                setMap(latitude, longitude);
+                try {
+                    setMap(latitude, longitude);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                setConnStatus(true);
             }
         });
     }
@@ -131,23 +124,25 @@ public class View implements Initializable {
     private String setTime(long timeStamp) {
         // Unix Time convert to our time
         Instant instant = Instant.ofEpochSecond(timeStamp);
-        return Date.from(instant).toString();
+        Date date = Date.from(instant);
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy z");
+        return format.format(date);
     }
 
-    private boolean checkConnection() {
-        if (info.message.equals(RECEIVE_DATA)) {
+    private void setConnStatus(boolean connStatus) {
+        if (connStatus) {
             connIndicator.setImage(new Image(Objects.requireNonNull(View.class.getResourceAsStream("/img/connected.png"))));
-            return true;
         } else {
             connIndicator.setImage(new Image(Objects.requireNonNull(View.class.getResourceAsStream("/img/disconnected.png"))));
-            return false;
         }
     }
 
     private void setMap(double latitude, double longitude) {
         WorldMap mapView = new WorldMap(WorldMap.ISS_POSITION);
-        mapView.setPrefSize(332, 210);
+        mapView.setPrefSize(382, 235);
+        mapView.setStyle("-fx-background-color: #474747");
         WorldMap.Location location = new WorldMap.Location(latitude, longitude);
+
         mapView.getLocations().add(location);
         mapPane.getChildren().add(mapView);
     }
@@ -189,16 +184,28 @@ public class View implements Initializable {
 
     private Stage createPopOver(Person selectedPerson) {
         Stage stage = new Stage();
-        stage.initStyle(StageStyle.UTILITY);
-        stage.setTitle(selectedPerson.name);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle(selectedPerson.getName());
         stage.initOwner(Main.WINDOW);
 
         try {
+            Pane rootPane = new Pane();
             FXMLLoader loader = new FXMLLoader(View.class.getResource("/PersonInformation.fxml"));
-            Scene scene = new Scene(loader.load());
+            Scene scene = new Scene(rootPane);
             stage.setScene(scene);
 
+            rootPane.getChildren().add(loader.load());
+
+            // Makes windows movable on the screen
+            rootPane.setOnMousePressed(pressEvent -> {
+                rootPane.setOnMouseDragged(dragEvent -> {
+                    stage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                    stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+                });
+            });
+
             PersonInfoController infoController = loader.getController();
+            infoController.setCloseScene(stage);
 
             Label countryLabel = infoController.getCountryLabel();
             Label agencyLabel = infoController.getAgencyLabel();
@@ -211,7 +218,8 @@ public class View implements Initializable {
             disLabel.setText(String.valueOf(selectedPerson.days_in_space));
             idLabel.setText(String.valueOf(selectedPerson.id));
             positionLabel.setText(selectedPerson.position);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
 
         return stage;
     }

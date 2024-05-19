@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="506.0" prefWidth="777.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jan.isstracker.UI.View">
+<AnchorPane prefHeight="514.0" prefWidth="782.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jan.isstracker.UI.View">
    <children>
-      <Pane layoutX="-1.0" layoutY="-31.0" prefHeight="75.0" prefWidth="777.0" style="-fx-background-color: #474747; -fx-background-radius: 25;">
+      <Pane layoutY="-31.0" prefHeight="75.0" prefWidth="782.0" style="-fx-background-color: #474747; -fx-background-radius: 25;">
          <children>
             <ImageView fx:id="connIndicator" fitHeight="25.0" fitWidth="22.0" layoutX="728.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="timestampLabel" layoutX="455.0" layoutY="41.0" text="20:34" textFill="#b9b9b9">
+            <Label fx:id="timestampLabel" layoutX="523.0" layoutY="41.0" text="16.06.2024 GMT+1" textFill="#b9b9b9">
                <font>
                   <Font size="16.0" />
                </font>
@@ -39,7 +39,7 @@
             </Label>
             <Label fx:id="latitudeLabel" layoutX="98.0" layoutY="68.0" prefHeight="17.0" prefWidth="91.0" text="11.5023" textFill="#b9b9b9" />
             <Label fx:id="longitudeLabel" layoutX="98.0" layoutY="48.0" prefHeight="17.0" prefWidth="91.0" text="128.6230" textFill="#b9b9b9" />
-            <Pane fx:id="mapPane" layoutX="14.0" layoutY="105.0" prefHeight="235.0" prefWidth="382.0" />
+            <Pane fx:id="mapPane" disable="true" layoutX="14.0" layoutY="105.0" prefHeight="235.0" prefWidth="382.0" />
          </children>
       </Pane>
       <Pane layoutX="437.0" layoutY="59.0" prefHeight="244.0" prefWidth="319.0" style="-fx-background-color: #474747; -fx-background-radius: 25;">
@@ -59,7 +59,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TableView fx:id="memberTable" layoutX="15.0" layoutY="66.0" prefHeight="168.0" prefWidth="289.0" style="-fx-background-color: #b9b9b9;">
+            <TableView fx:id="memberTable" blendMode="OVERLAY" cache="true" layoutX="15.0" layoutY="66.0" prefHeight="168.0" prefWidth="289.0">
               <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
                 <TableColumn fx:id="craftColumn" prefWidth="75.0" text="Spacecraft" />

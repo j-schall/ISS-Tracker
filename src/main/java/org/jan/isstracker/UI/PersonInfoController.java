@@ -1,7 +1,11 @@
 package org.jan.isstracker.UI;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class PersonInfoController {
     @FXML
@@ -37,5 +41,17 @@ public class PersonInfoController {
 
     public Label getPositionLabel() {
         return positionLabel;
+    }
+    private Stage closeStage;
+
+    public void setCloseScene(Stage stage) {
+        closeStage = stage;
+    }
+
+    @FXML
+    void exit(MouseEvent event) {
+        if (closeStage == null)
+            System.out.println("No closing stage was specified!");
+        closeStage.close();
     }
 }

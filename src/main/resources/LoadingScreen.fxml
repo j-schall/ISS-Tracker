@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="514.0" prefWidth="782.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jan.isstracker.UI.LoadingScreenController">
+   <ImageView cache="true" cacheHint="QUALITY" fitHeight="50.0" fitWidth="50.0" layoutX="364.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="228.0" AnchorPane.leftAnchor="364.0" AnchorPane.rightAnchor="363.0" AnchorPane.topAnchor="228.0">
+      <Image url="@img/loading_animation.gif" />
+   </ImageView>
+   <Label fx:id="internetConnFailureLabel" layoutX="201.0" layoutY="306.0" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+</AnchorPane>
