@@ -1,4 +1,4 @@
-<h1>ISS-Tracker</h1>
+# ISS-Tracker
 <img width="458" alt="Screenshot 2023-12-28 141406" src="https://github.com/j-schall/ISS-Tracker/assets/122560931/b61ef0f0-547d-48ff-ba75-19c14b1d14b3">
 
 <p>This application receives real time data from the International Space Station to show the newest information about: </p>
@@ -8,7 +8,16 @@
   <li>General information like the expedition patch, start date, etc.</li>
 </ul>
 
-<h2>Used APIs</h2>
-<a href="http://open-notify.org/Open-Notify-API/ISS-Location-Now/">Open-Notify</a>
+### Resources
+[Open-Notify](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
 <br>
-<a href="https://corquaid.github.io/international-space-station-APIs/">Corquaid's International Space Station API</a>
+[Corquaid's International Space Station API](https://corquaid.github.io/international-space-station-APIs/)
+[JavaFX](https://github.com/openjdk/jfx)
+[ControlsFX](https://github.com/controlsfx/controlsfx/)
+
+### License
+This project is licensed under the GNU General Public License v2.0. See the `LICENSE` file for more details.
+
+The following used libraries with their licenses:
+- [ControlsFX](https://github.com/controlsfx/controlsfx/) - Licensed under the BSD 3-Clause License.
+- [Corquaid's Space Station API](https://github.com/corquaid/international-space-station-APIs) - Licensed under the MIT License.
