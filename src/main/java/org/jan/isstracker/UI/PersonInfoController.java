@@ -47,11 +47,13 @@ public class PersonInfoController {
     public void setCloseScene(Stage stage) {
         closeStage = stage;
     }
+    public boolean popOverIsClosed = false;
 
     @FXML
     void exit(MouseEvent event) {
         if (closeStage == null)
             System.out.println("No closing stage was specified!");
         closeStage.close();
+        popOverIsClosed = true;
     }
 }

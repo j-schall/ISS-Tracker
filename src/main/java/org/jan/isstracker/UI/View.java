@@ -70,6 +70,7 @@ public class View implements Initializable {
     private RootInformation info;
     private CrewInformation crewInfo;
     private final ArrayList<Person> oldPersonData = new ArrayList<>();
+    private Stage popOverStage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,7 +79,8 @@ public class View implements Initializable {
             APIRequest request = new APIRequest();
             getPersonsInSpace(request.convertToClass(APIRequest.CREW));
             getGeneralInformation(request.convertToClass(APIRequest.CREW));
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
 
         // Set Timer, to receive new data
         Timer timer = new Timer(true);
@@ -183,45 +185,47 @@ public class View implements Initializable {
     }
 
     private Stage createPopOver(Person selectedPerson) {
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle(selectedPerson.getName());
-        stage.initOwner(Main.WINDOW);
+        if (popOverStage == null || !popOverStage.isShowing()) {
+            try {
+                Pane rootPane = new Pane();
+                FXMLLoader loader = new FXMLLoader(View.class.getResource("/PersonInformation.fxml"));
+                Scene scene = new Scene(rootPane);
+                popOverStage = new Stage();
 
-        try {
-            Pane rootPane = new Pane();
-            FXMLLoader loader = new FXMLLoader(View.class.getResource("/PersonInformation.fxml"));
-            Scene scene = new Scene(rootPane);
-            stage.setScene(scene);
+                popOverStage.initStyle(StageStyle.UNDECORATED);
+                popOverStage.setTitle(selectedPerson.getName());
+                popOverStage.initOwner(Main.WINDOW);
 
-            rootPane.getChildren().add(loader.load());
+                rootPane.getChildren().add(loader.load());
 
-            // Makes windows movable on the screen
-            rootPane.setOnMousePressed(pressEvent -> {
-                rootPane.setOnMouseDragged(dragEvent -> {
-                    stage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-                    stage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+                // Makes windows movable on the screen
+                rootPane.setOnMousePressed(pressEvent -> {
+                    rootPane.setOnMouseDragged(dragEvent -> {
+                        popOverStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                        popOverStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+                    });
                 });
-            });
 
-            PersonInfoController infoController = loader.getController();
-            infoController.setCloseScene(stage);
+                PersonInfoController infoController = loader.getController();
+                infoController.setCloseScene(popOverStage);
 
-            Label countryLabel = infoController.getCountryLabel();
-            Label agencyLabel = infoController.getAgencyLabel();
-            Label disLabel = infoController.getDisLabel();
-            Label idLabel = infoController.getIdLabel();
-            Label positionLabel = infoController.getPositionLabel();
+                Label countryLabel = infoController.getCountryLabel();
+                Label agencyLabel = infoController.getAgencyLabel();
+                Label disLabel = infoController.getDisLabel();
+                Label idLabel = infoController.getIdLabel();
+                Label positionLabel = infoController.getPositionLabel();
 
-            countryLabel.setText(selectedPerson.country);
-            agencyLabel.setText(selectedPerson.agency);
-            disLabel.setText(String.valueOf(selectedPerson.days_in_space));
-            idLabel.setText(String.valueOf(selectedPerson.id));
-            positionLabel.setText(selectedPerson.position);
-        } catch (IOException ignored) {
+                countryLabel.setText(selectedPerson.country);
+                agencyLabel.setText(selectedPerson.agency);
+                disLabel.setText(String.valueOf(selectedPerson.days_in_space));
+                idLabel.setText(String.valueOf(selectedPerson.id));
+                positionLabel.setText(selectedPerson.position);
+
+                popOverStage.setScene(scene);
+            } catch (IOException ignored) {
+            }
         }
-
-        return stage;
+        return popOverStage;
     }
 
     private void getGeneralInformation(CrewInformation crewInfo) throws IOException {
