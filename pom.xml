@@ -71,27 +71,6 @@
       <artifactId>controlsfx</artifactId>
       <version>11.2.0</version>
     </dependency>
-
-    <dependency>
-      <groupId>com.opencsv</groupId>
-      <artifactId>opencsv</artifactId>
-      <version>5.9</version>
-    </dependency>
-      <dependency>
-        <groupId>org.geotools</groupId>
-        <artifactId>gt-main</artifactId>
-        <version>25.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.geotools</groupId>
-        <artifactId>gt-geojson</artifactId>
-        <version>25.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.geotools</groupId>
-        <artifactId>gt-referencing</artifactId>
-        <version>25.2</version>
-      </dependency>
   </dependencies>
 
   <build>

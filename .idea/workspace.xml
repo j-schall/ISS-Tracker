@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3ae0c12-21cc-49b5-ac73-f54647bf80db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/tableViewStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/LoadingScreenController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonInformation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PersonInformation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/View.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="d3ae0c12-21cc-49b5-ac73-f54647bf80db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

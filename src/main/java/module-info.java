@@ -6,12 +6,6 @@ module org.jan.isstracker {
     requires javafx.fxml;
     requires javafx.web;
     requires org.controlsfx.controls;
-    requires com.opencsv;
-    requires org.locationtech.jts;
-    requires org.geotools.geojson;
-    requires org.geotools.main;
-    requires org.geotools.opengis;
-    requires java.sql;
 
     exports org.jan.isstracker;
     exports org.jan.isstracker.UI;
