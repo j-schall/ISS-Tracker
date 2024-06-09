@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02446a41-0ac5-40e8-b767-a561e098c28f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ISSTracker_jar.xml" beforeDir="false" />
+    <list default="true" id="d3ae0c12-21cc-49b5-ac73-f54647bf80db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/tableViewStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/PersonInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/PersonInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/LoadingScreenController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/LoadingScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LoadingScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jan/isstracker/UI/WorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonInformation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PersonInformation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/View.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,30 +26,35 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2gjPhpz9Q24Rfh8Eb0GStMArs8h" />
+  <component name="ProjectId" id="2hYgyEqlLO5KZDLFfhz8zXwmY15" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.ISSTracker [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jan Schall/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.ISSTracker [clean].executor": "Run",
+    "Maven.ISSTracker [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Jan Schall/AppData/Local/SceneBuilder/SceneBuilder.exe",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="02446a41-0ac5-40e8-b767-a561e098c28f" name="Changes" comment="" />
-      <created>1716208136779</created>
+      <changelist id="d3ae0c12-21cc-49b5-ac73-f54647bf80db" name="Changes" comment="" />
+      <created>1717776676819</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1716208136779</updated>
+      <updated>1717776676819</updated>
     </task>
     <servers />
   </component>

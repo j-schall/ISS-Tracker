@@ -25,6 +25,7 @@ import org.jan.isstracker.UI.LoadingScreenController;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main extends Application {
@@ -39,11 +40,18 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/LoadingScreen.fxml"));
         rootPane.getChildren().add(loader.load());
         Scene scene = new Scene(rootPane);
+        scene.getStylesheets().add(String.valueOf(Main.class.getResource("/css/tableViewStyle.css")));
         stage.setScene(scene);
         stage.setTitle("ISS-Tracker");
         stage.setResizable(false);
         stage.show();
 
+        Timeline timeline = getTimeline(loader);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private Timeline getTimeline(FXMLLoader loader) {
         AtomicInteger failureCounter = new AtomicInteger(); // Increases after each connection failure
 
         // An Internet connection is searched for after every 2 seconds
@@ -62,8 +70,7 @@ public class Main extends Application {
                 connectionFailureLb.setText("Couldn't found a stable Internet connection. Please retry.");
             }
         }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        return timeline;
     }
 
     private void loadMainView() {
@@ -74,6 +81,7 @@ public class Main extends Application {
             loadedMainView = true;
         } catch (IllegalStateException | IOException e) {
             if (!loadMainViewAlreadyFailed) {
+                e.printStackTrace();
                 Alert loadingErrorAlert = new Alert(Alert.AlertType.ERROR);
                 loadingErrorAlert.setTitle("Loading error");
                 loadingErrorAlert.setContentText("Couldn't find resources for the main window. Please prove your installation!");
@@ -93,7 +101,8 @@ public class Main extends Application {
             conn.connect();
             conn.getInputStream().close();
             isConnected = true;
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return isConnected;
     }
 

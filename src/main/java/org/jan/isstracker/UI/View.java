@@ -28,6 +28,8 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.*;
 
+import static org.controlsfx.control.WorldMapView.*;
+
 public class View implements Initializable {
     @FXML
     private ImageView connIndicator;
@@ -66,14 +68,25 @@ public class View implements Initializable {
     private Label startDateLabel;
 
     @FXML
+    private Label mapStatusLb;
+
+    @FXML
     private Label endDateLabel;
+
+    @FXML
+    private Label countryLabel;
+
     private RootInformation info;
     private CrewInformation crewInfo;
     private final ArrayList<Person> oldPersonData = new ArrayList<>();
     private Stage popOverStage;
 
+    // Stores the last coordinates of the ISS
+    private ObservableList<Location> lastIssPos = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        mapStatusLb.setText("");
         makeRequest();
         try {
             APIRequest request = new APIRequest();
@@ -116,7 +129,7 @@ public class View implements Initializable {
                 try {
                     setMap(latitude, longitude);
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    mapStatusLb.setText("Map not found");
                 }
                 setConnStatus(true);
             }
@@ -143,10 +156,11 @@ public class View implements Initializable {
         WorldMap mapView = new WorldMap(WorldMap.ISS_POSITION);
         mapView.setPrefSize(382, 235);
         mapView.setStyle("-fx-background-color: #474747");
-        WorldMap.Location location = new WorldMap.Location(latitude, longitude);
+        WorldMap.Location issLocation = new WorldMap.Location(latitude, longitude);
 
-        mapView.getLocations().add(location);
+        mapView.getLocations().addAll(issLocation);
         mapPane.getChildren().add(mapView);
+        lastIssPos.add(issLocation);
     }
 
     private void getPersonsInSpace(CrewInformation crewInfo) {

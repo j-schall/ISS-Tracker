@@ -1,0 +1,6 @@
+/* Disable bottom scrollbar in the TableView */
+.table-view .scroll-bar * {
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
